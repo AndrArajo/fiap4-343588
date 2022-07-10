@@ -1,0 +1,221 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  annotations:
+    alpha.image.policy.openshift.io/resolve-names: '*'
+    app.openshift.io/vcs-ref: ''
+    app.openshift.io/vcs-uri: 'https://github.com/openshift-instruqt/blog-django-py'
+    deployment.kubernetes.io/revision: '8'
+    image.openshift.io/triggers: >-
+      [{"from":{"kind":"ImageStreamTag","name":"blog-django-py:latest","namespace":"rm343588"},"fieldPath":"spec.template.spec.containers[?(@.name==\"blog-django-py\")].image","pause":"false"}]
+    openshift.io/generated-by: OpenShiftWebConsole
+  selfLink: /apis/apps/v1/namespaces/rm343588/deployments/blog-django-py
+  resourceVersion: '89594897'
+  name: blog-django-py
+  generation: 8
+  managedFields:
+    - manager: openshift-controller-manager
+      operation: Update
+      apiVersion: apps/v1
+      time: '2022-06-28T23:37:11Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:spec':
+          'f:template':
+            'f:spec':
+              'f:containers':
+                'k:{"name":"blog-django-py"}':
+                  'f:image': {}
+    - manager: Mozilla
+      operation: Update
+      apiVersion: apps/v1
+      time: '2022-06-29T00:01:52Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:metadata':
+          'f:annotations':
+            .: {}
+            'f:alpha.image.policy.openshift.io/resolve-names': {}
+            'f:app.openshift.io/vcs-ref': {}
+            'f:app.openshift.io/vcs-uri': {}
+            'f:image.openshift.io/triggers': {}
+            'f:openshift.io/generated-by': {}
+          'f:labels':
+            .: {}
+            'f:app': {}
+            'f:app.kubernetes.io/component': {}
+            'f:app.kubernetes.io/instance': {}
+            'f:app.kubernetes.io/name': {}
+            'f:app.kubernetes.io/part-of': {}
+            'f:app.openshift.io/runtime': {}
+            'f:app.openshift.io/runtime-version': {}
+        'f:spec':
+          'f:progressDeadlineSeconds': {}
+          'f:replicas': {}
+          'f:revisionHistoryLimit': {}
+          'f:selector':
+            'f:matchLabels':
+              .: {}
+              'f:app': {}
+          'f:strategy':
+            'f:rollingUpdate':
+              .: {}
+              'f:maxSurge': {}
+              'f:maxUnavailable': {}
+            'f:type': {}
+          'f:template':
+            'f:metadata':
+              'f:labels':
+                .: {}
+                'f:app': {}
+                'f:deploymentconfig': {}
+            'f:spec':
+              'f:containers':
+                'k:{"name":"blog-django-py"}':
+                  .: {}
+                  'f:env':
+                    'k:{"name":"BLOG_BANNER_COLOR"}':
+                      .: {}
+                      'f:name': {}
+                      'f:value': {}
+                    'k:{"name":"BLOG_SITE_NAME"}':
+                      'f:value': {}
+                  'f:imagePullPolicy': {}
+                  'f:name': {}
+                  'f:ports':
+                    .: {}
+                    'k:{"containerPort":8080,"protocol":"TCP"}':
+                      .: {}
+                      'f:containerPort': {}
+                      'f:protocol': {}
+                  'f:resources': {}
+                  'f:terminationMessagePath': {}
+                  'f:terminationMessagePolicy': {}
+              'f:dnsPolicy': {}
+              'f:restartPolicy': {}
+              'f:schedulerName': {}
+              'f:securityContext': {}
+              'f:terminationGracePeriodSeconds': {}
+    - manager: oc
+      operation: Update
+      apiVersion: apps/v1
+      time: '2022-06-29T00:07:41Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:spec':
+          'f:template':
+            'f:spec':
+              'f:containers':
+                'k:{"name":"blog-django-py"}':
+                  'f:env':
+                    .: {}
+                    'k:{"name":"BLOG_SITE_NAME"}':
+                      .: {}
+                      'f:name': {}
+                    'k:{"name":"DATABASE_URL"}':
+                      .: {}
+                      'f:name': {}
+                      'f:value': {}
+    - manager: kube-controller-manager
+      operation: Update
+      apiVersion: apps/v1
+      time: '2022-07-04T14:52:43Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:metadata':
+          'f:annotations':
+            'f:deployment.kubernetes.io/revision': {}
+        'f:status':
+          'f:availableReplicas': {}
+          'f:conditions':
+            .: {}
+            'k:{"type":"Available"}':
+              .: {}
+              'f:lastTransitionTime': {}
+              'f:lastUpdateTime': {}
+              'f:message': {}
+              'f:reason': {}
+              'f:status': {}
+              'f:type': {}
+            'k:{"type":"Progressing"}':
+              .: {}
+              'f:lastTransitionTime': {}
+              'f:lastUpdateTime': {}
+              'f:message': {}
+              'f:reason': {}
+              'f:status': {}
+              'f:type': {}
+          'f:observedGeneration': {}
+          'f:readyReplicas': {}
+          'f:replicas': {}
+          'f:updatedReplicas': {}
+  namespace: rm343588
+  labels:
+    app: blog-django-py
+    app.kubernetes.io/component: blog-django-py
+    app.kubernetes.io/instance: blog-django-py
+    app.kubernetes.io/name: python
+    app.kubernetes.io/part-of: blog-django-py-app
+    app.openshift.io/runtime: python
+    app.openshift.io/runtime-version: 3.8-ubi7
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: blog-django-py
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: blog-django-py
+        deploymentconfig: blog-django-py
+    spec:
+      containers:
+        - name: blog-django-py
+          image: >-
+            image-registry.openshift-image-registry.svc:5000/rm343588/blog-django-py@sha256:2b8655188174ec474a513be283b55458c68da8a8c2ff562b1c43a6ac815024fe
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+          env:
+            - name: BLOG_SITE_NAME
+              value: '343588'
+            - name: BLOG_BANNER_COLOR
+              value: blue
+            - name: DATABASE_URL
+              value: 'postgresql://sampledb:sampledb@sample-database:5432/sampledb'
+          resources: {}
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          imagePullPolicy: Always
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 30
+      dnsPolicy: ClusterFirst
+      securityContext: {}
+      schedulerName: default-scheduler
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 25%
+      maxSurge: 25%
+  revisionHistoryLimit: 10
+  progressDeadlineSeconds: 600
+status:
+  observedGeneration: 8
+  replicas: 1
+  updatedReplicas: 1
+  readyReplicas: 1
+  availableReplicas: 1
+  conditions:
+    - type: Progressing
+      status: 'True'
+      lastUpdateTime: '2022-06-29T00:07:45Z'
+      lastTransitionTime: '2022-06-28T23:35:30Z'
+      reason: NewReplicaSetAvailable
+      message: ReplicaSet "blog-django-py-7bfdd4fc48" has successfully progressed.
+    - type: Available
+      status: 'True'
+      lastUpdateTime: '2022-07-04T14:52:43Z'
+      lastTransitionTime: '2022-07-04T14:52:43Z'
+      reason: MinimumReplicasAvailable
+      message: Deployment has minimum availability.
